@@ -1,5 +1,15 @@
-{% extends "base.html" %}
-
-{% block content %}
-{{result|safe}}
-{% endblock %}
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("body", 1500, 1200);
+    var data = {{result|safe}}
+    var chart = new dimple.chart(svg, data);
+    chart.addCategoryAxis("x", "opening");
+    chart.addMeasureAxis("y", "close");
+    chart.addSeries(null, dimple.plot.bar);
+    chart.draw();
+  </script>
+</body>
