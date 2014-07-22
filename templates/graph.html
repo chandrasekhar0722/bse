@@ -7,9 +7,13 @@
     var svg = dimple.newSvg("body", 1500, 1200);
     var data = {{result|safe}}
     var chart = new dimple.chart(svg, data);
+    /*This takes just a position and one or two categoryFields and creates an ordinal axis for the given field*/
     chart.addCategoryAxis("x", "opening");
-    chart.addMeasureAxis("y", "close");
-    chart.addSeries(null, dimple.plot.bar);
-    chart.draw();
+    /*This takes just a position and a measure and creates a linear numerical axis for the given measure field*/
+    /*chart.addMeasureAxis("y", "close");
+    chart.addSeries(null, dimple.plot.bar);*/
+    chart.addCategoryAxis("y", "close");
+    chart.addSeries("opening", dimple.plot.bar);
+    chart.draw(2000);
   </script>
 </body>
